@@ -1,0 +1,13 @@
+---
+# handlers file for haproxy
+- name: stop haproxy
+  become: yes
+  service:
+    name: haproxy
+    state: stopped
+
+- name: restart haproxy
+  become: yes
+  service:
+    name: haproxy
+    state: restarted

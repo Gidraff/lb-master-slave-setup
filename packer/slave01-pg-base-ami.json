@@ -14,17 +14,26 @@
       "ssh_username": "centos",
       "ssh_keypair_name": "pgcluster",
       "ssh_private_key_file": "~/.ssh/pgcluster.pem",
-      "ami_name": "pg-centos-db-{{timestamp}}"
+      "ami_name": "slave-pg-db1-{{timestamp}}"
     }
   ],
   "provisioners": [
     {
       "type": "shell",
-      "script": "../provisioners/setup_python.sh"
+      "script": "./provisioners/scripts/bootstrap.sh"
+    },
+    {
+      "type": "ansible",
+      "playbook_file": "./provisioners/ansible/postgres.yml"
+    },
+    {
+      "type": "file",
+      "source": "./provisioners/conf/slave01",
+      "destination": "/tmp/slave01"
     },
     {
       "type": "shell",
-      "script": "../provisioners/setup_pg.sh"
+      "script": "./provisioners/scripts/configure_slave01.sh"
     }
   ]
 }

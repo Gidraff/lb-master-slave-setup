@@ -14,17 +14,17 @@
       "ssh_username": "centos",
       "ssh_keypair_name": "pgcluster",
       "ssh_private_key_file": "~/.ssh/pgcluster.pem",
-      "ami_name": "pg-centos-etcd-{{timestamp}}"
+      "ami_name": "etcd-dcs-{{timestamp}}"
     }
   ],
   "provisioners": [
     {
       "type": "shell",
-      "script": "../provisioners/setup_python.sh"
+      "script": "./provisioners/scripts/bootstrap.sh"
     },
     {
-      "type": "shell",
-      "script": "../provisioners/setup_etcd.sh"
+      "type": "ansible",
+      "playbook_file": "./provisioners/ansible/etcd.yml"
     }
   ]
 }

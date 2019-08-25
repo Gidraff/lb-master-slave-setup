@@ -1,0 +1,11 @@
+---
+
+- name: Configure Haproxy
+  become: yes
+  copy:
+    src: files/haproxy.cfg
+    dest: /etc/haproxy/haproxy.cfg
+    force: yes
+  notify:
+  - stop haproxy
+  - restart haproxy
