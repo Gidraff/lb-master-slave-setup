@@ -1,0 +1,28 @@
+---
+
+- name: ensure patroni dependencies packages are installed
+  become: yes
+  yum:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+    - gcc
+    - python-devel
+    - epel-release
+    - python2-pip
+
+- name: Install postgresql yum repo
+  become: yes
+  command: yum install -y https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7-x86_64/pgdg-centos10-10-2.noarch.rpm
+
+
+- name: Install postgresql
+  become: yes
+  yum:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+    - postgresql10-server
+    - postgresql10

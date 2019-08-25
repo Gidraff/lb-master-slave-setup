@@ -1,0 +1,16 @@
+---
+- name: install and upgrade pip
+  become: yes
+  command: pip install --upgrade pip
+  
+- name: install and upgrade setuptools
+  become: yes
+  command: pip install --upgrade --user setuptools
+ 
+- name: install psycopg2-binary
+  become: yes
+  command: pip install --user psycopg2-binary
+ 
+- name: install patroni
+  become: yes
+  shell: pip install --user patroni[etcd]

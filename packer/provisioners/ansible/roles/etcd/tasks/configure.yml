@@ -1,0 +1,9 @@
+---
+
+- name: Configure Etcd
+  become: yes
+  copy:
+    src: files/etcd.conf
+    dest: /etc/etcd/etcd.conf
+    force: yes
+  notify: reload systemd
