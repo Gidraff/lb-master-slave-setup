@@ -1,0 +1,13 @@
+---
+
+- name: Upgrade all packages to the latest version
+  become: yes
+  yum:
+    name: "*"
+    state: latest
+
+- name: install etcd
+  become: yes
+  yum: 
+    name: etcd
+    state: present

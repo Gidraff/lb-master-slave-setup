@@ -1,0 +1,8 @@
+.env
+terraform/dev/main.tf
+terraform/dev/.terraform.*
+terraform/dev/.terraform/
+*tfstate
+*tfstate.backup
+*.retry
+.DS_STORE
